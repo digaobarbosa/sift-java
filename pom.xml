@@ -8,7 +8,21 @@
   
   <name>Sift Science Java library</name>
   <description>Java library which help integrate your Java application to Sift Science quicker and easier.</description>
-  <url>https://github.com/mcac0006/sift-java</url>
+  <url>https://github.com/digaobarbosa/sift-java</url>
+  <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>gtac</id>
+            <name>gtac-releases</name>
+            <url>http://jenkins3.guichevirtual.com.br/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>gtac</id>
+            <name>gtac-snapshots</name>
+            <url>http://jenkins3.guichevirtual.com.br/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
   
   <developers>
         <developer>
@@ -22,9 +36,9 @@
   
   
    <scm>
-       <connection>scm:git:git://github.com/mcac0006/sift-java.git</connection>
-       <developerConnection>scm:git:git@github.com:mcac0006/sift-java.git</developerConnection>
-       <url>http://github.com/mcac0006/sift-java/tree/master</url>
+       <connection>scm:git:git://github.com:digaobarbosa/sift-java.git</connection>
+       <developerConnection>scm:git:git@github.com:digaobarbosa/sift-java.git</developerConnection>
+       <url>http://github.com/digaobarbosa/sift-java/tree/master</url>
    </scm>
   
   <dependencies>
