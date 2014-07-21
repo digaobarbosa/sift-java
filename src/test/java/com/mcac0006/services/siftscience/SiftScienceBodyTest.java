@@ -114,7 +114,7 @@ public class SiftScienceBodyTest {
 		
 		final Transaction transaction = new Transaction();
 		transaction.setApiKey("INSERT_API_KEY_HERE");
-		transaction.setTime(new Date(112, 10, 8, 0, 0, 0));
+		transaction.setTime(new Date(1352329200*1000L));
 		transaction.setUserId("billy_jones_301").setUserEmail("bill@gmail.com").setTransactionType(TransactionType.SALE).setTransactionStatus(TransactionStatus.SUCCESS).setAmount(5067900000l).setCurrencyCode("USD").setOrderId("ORDER-123124124").setTransactionId("719637215").setBillingAddress(billingAddress).setPaymentMethod(paymentMethod).setShippingAddress(shippingAddress).setSessionId("gigtleqddo84l8cm15qe4il3q3").setSellerUserId("slinkys_emporium");
 		
 		// 2. Generate an {@link Transaction} instance from $historical_transaction.json.
@@ -580,7 +580,7 @@ public class SiftScienceBodyTest {
 		// 1. Instantiate an {@link Label} instance with the same values found in $historical_label.json.
 		final Label label = new Label();
 		label.setApiKey("INSERT_API_KEY_HERE");
-		label.setTime(new Date(112, 10, 8, 0, 0, 0));
+		label.setTime(new Date(1352329200L*1000));
 		label.setIsBad(true).setReasons(new Reason[]{Reason.CHARGEBACK}).setDescription("Freeform text describing the user or incident.");
 		
 		// 2. Generate an {@link Label} instance from $historical_label.json.

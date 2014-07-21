@@ -6,6 +6,7 @@ package com.mcac0006.siftscience.label.domain;
 import java.util.Arrays;
 import java.util.Date;
 
+import lombok.ToString;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -24,6 +25,7 @@ import com.mcac0006.siftscience.types.serializer.DateSerializer;
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
+@ToString(of={"isBad","reasons","description"})
 public class Label {
 	
 	/**

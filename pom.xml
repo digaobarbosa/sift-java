@@ -93,6 +93,13 @@
 		<scope>test</scope>
 	</dependency>
   	<!-- TESTING -->
+      <!-- Lombok for syntatic sugar-->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.14.4</version>
+          <scope>provided</scope>
+      </dependency>
   </dependencies>
   
   <licenses>
