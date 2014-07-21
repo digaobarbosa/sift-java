@@ -107,6 +107,12 @@ public class SiftScienceHelper {
 			throw new RuntimeException("Error generating JSON content to send.", e);
 		}
 	}
+
+    public static void main(String [] args){
+        SiftScienceHelper h = new SiftScienceHelper("XXXXX");
+        SiftScienceScore scode = h.getScore("2");
+        System.out.println(scode);
+    }
 	
 	/**
 	 * Retrieve a risk assessment of a particular user. This is particularly useful to consult with Sift Science 

@@ -3,6 +3,9 @@
  */
 package com.mcac0006.siftscience.score.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +26,8 @@ import java.util.Map;
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
+@EqualsAndHashCode(of={"name","value"})
+@Data
 public class Reason {
 
 	/**
@@ -38,7 +43,7 @@ public class Reason {
 	 * just how many users are sharing that device.
 	 * 
 	 */
-	private double value;
+	private String value;
 	
 	/**
 	 * Some further information on the reason. These are key-value optional pairs.
@@ -51,14 +56,7 @@ public class Reason {
 	 */
 	private Map<String, String> details = new HashMap<String, String>();
 
-	public final String getName() {
-		return name;
-	}
 
-	public final double getValue() {
-		return value;
-	}
-	
 	public void addDetails(final String key, final String value) {
 		details.put(key, value);
 	}
@@ -67,39 +65,4 @@ public class Reason {
 		return details;
 	}
 
-	public final void setName(String name) {
-		this.name = name;
-	}
-
-	public final void setValue(double value) {
-		this.value = value;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-
-		if (obj == null || !(obj instanceof Reason)) {
-			return false;
-		}
-		
-		final Reason e = (Reason)obj;
-		
-		if (this.name == null) {
-			if (e.getName() != null) {
-				return false;
-			}
-		} else if (!this.name.equals(e.getName())) {
-			return false;
-		}
-		
-		if (this.details == null) {
-			if (e.getDetails() != null) {
-				return false;
-			}
-		} else if (!this.details.equals(e.getDetails())) {
-			return false;
-		}
-		
-		return true;
-	}
 }

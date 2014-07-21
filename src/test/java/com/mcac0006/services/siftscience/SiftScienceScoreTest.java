@@ -79,21 +79,21 @@ public class SiftScienceScoreTest {
 		
 		final Reason reason1 = new Reason();
 		reason1.setName("Users per device");
-		reason1.setValue(2);
+		reason1.setValue("2");
 		reason1.addDetails("users", "ggre0001");
 		
 		final Reason reason2 = new Reason();
 		reason2.setName("Transaction billing bin");
-		reason2.setValue(444433);
+		reason2.setValue("444433");
 		reason2.addDetails("users", "user1");
 		
 		final Reason reason3 = new Reason();
 		reason3.setName("Time since previous transaction");
-		reason3.setValue(0.003);
+		reason3.setValue("0.003");
 		
 		final Reason reason4 = new Reason();
 		reason4.setName("Users per browser+IP");
-		reason4.setValue(9);
+		reason4.setValue("9");
 		reason4.addDetails("users", "JLHBNCCELNGCPDHIFNJGNEGKNDOKDNHDDBJLPLMCIJAMKKNKOCNPPHCFBJGHDMKHCDCDMDNJJLKFMBBNHMHKMMGOBELIMFNKAMEGGDEHFMCOFMDKNOPEGPHDLMNOMAED,ggre0001,FGGFGDAHIFMAGALFDHMBGBENFMLPKMCGFDGOPCAG,al_capoopoo,DMEKDIEEPMLBHEJBPFCMPHJPIGEOBOPFAKGPAMDC,APBBICJCMAGIPNKMDPEMFFAGFCOOHJJCMCNPCLBD,NKDJKDOOFOGLELANDCFFLPOPJFGABIJAKPNIAHAJ,NLMPOHIPDNGDNKDADCAHKFILIBNFBKAJNMNLIEKB");
 		
 		scoreToAssertAgainst.setReasons(new Reason[]{ reason1, reason2, reason3, reason4 });

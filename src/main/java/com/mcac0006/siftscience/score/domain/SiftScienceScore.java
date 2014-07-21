@@ -5,6 +5,9 @@ package com.mcac0006.siftscience.score.domain;
 
 import java.util.Arrays;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.mcac0006.siftscience.label.domain.Label;
@@ -22,6 +25,9 @@ import com.mcac0006.siftscience.label.domain.Label;
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
+@ToString(of={"userId","score"})
+@Data
+@EqualsAndHashCode(of = {"userId","errorMessage","score"})
 public class SiftScienceScore {
 
 	
@@ -50,7 +56,7 @@ public class SiftScienceScore {
 	 * If this user has been labeled by you or your system, this will contain the last label given by Sift Science.
 	 */
 	@JsonProperty(value="latest_label")
-	private Label latestLabel;
+	private ScoreLabel latestLabel;
 	
 	/**
 	 * Return a status for the response. Refer to the 
@@ -61,45 +67,6 @@ public class SiftScienceScore {
 	@JsonProperty(value="error_message")
 	private String errorMessage;
 
-	public final String getUserId() {
-		return userId;
-	}
-
-	public final Float getScore() {
-		return score;
-	}
-
-	public final Reason[] getReasons() {
-		return reasons;
-	}
-
-	public final Label getLatestLabel() {
-		return latestLabel;
-	}
-
-	public final Short getStatus() {
-		return status;
-	}
-
-	public final String getErrorMessage() {
-		return errorMessage;
-	}
-
-	public final void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public final void setScore(Float score) {
-		this.score = score;
-	}
-
-	public final void setReasons(Reason[] reasons) {
-		this.reasons = reasons;
-	}
-
-	public final void setLatestLabel(Label latestLabel) {
-		this.latestLabel = latestLabel;
-	}
 
 	public final void setStatus(Short status) {
 		this.status = status;
@@ -109,63 +76,5 @@ public class SiftScienceScore {
 		this.errorMessage = errorMessage;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
 
-		if (obj == null || !(obj instanceof SiftScienceScore)) {
-			return false;
-		}
-		
-		final SiftScienceScore e = (SiftScienceScore)obj;
-		
-		if (this.errorMessage == null) {
-			if (e.getErrorMessage() != null) {
-				return false;
-			}
-		} else if (!this.errorMessage.equals(e.getErrorMessage())) {
-			return false;
-		}
-		
-		if (this.latestLabel == null) {
-			if (e.getLatestLabel() != null) {
-				return false;
-			}
-		} else if (!this.latestLabel.equals(e.getLatestLabel())) {
-			return false;
-		}
-
-		if (this.reasons == null) {
-			if (e.getReasons() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(this.reasons, e.getReasons())) {
-			return false;
-		}
-		
-		if (this.score == null) {
-			if (e.getScore() != null) {
-				return false;
-			}
-		} else if (!this.score.equals(e.getScore())) {
-			return false;
-		}
-		
-		if (this.status == null) {
-			if (e.getStatus() != null) {
-				return false;
-			}
-		} else if (!this.status.equals(e.getStatus())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (e.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(e.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
 }
