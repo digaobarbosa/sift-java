@@ -593,5 +593,15 @@ public class SiftScienceBodyTest {
 		 */
 		Assert.assertEquals("Both instances must be equal", label, $label);
 	}
+
+
+    @Test
+    public void createOrderTimeNull() throws IOException {
+        CreateOrder createOrder = new CreateOrder();
+        createOrder.setAmount(100*10000L);
+        createOrder.setOrderId("1");
+        String s = mapper.writeValueAsString(createOrder);
+        Assert.assertTrue("Cant have \"$time\":null",!s.contains("$time"));
+    }
 }
 

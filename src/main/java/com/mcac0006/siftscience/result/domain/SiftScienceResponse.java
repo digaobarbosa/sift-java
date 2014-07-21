@@ -3,12 +3,15 @@
  */
 package com.mcac0006.siftscience.result.domain;
 
+import lombok.ToString;
+
 /**
  * This is the response we receive from Sift Science.
  * 
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
+@ToString(of = {"status","error_message","request"})
 public class SiftScienceResponse {
 	
 	/**
