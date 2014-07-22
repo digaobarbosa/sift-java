@@ -65,7 +65,7 @@ public class Label {
 	 * for more information.
 	 */
 	@JsonProperty(value="$time")
-	@JsonSerialize(using=DateSerializer.class)
+	@JsonSerialize(using=DateSerializer.class,include = JsonSerialize.Inclusion.NON_NULL)
 	@JsonDeserialize(using=DateDeserializer.class)
 	private Date time;
 
