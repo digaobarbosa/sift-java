@@ -3,25 +3,22 @@
  */
 package com.mcac0006.siftscience;
 
-import java.io.IOException;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import com.mcac0006.siftscience.event.domain.Event;
+import com.mcac0006.siftscience.label.domain.Label;
+import com.mcac0006.siftscience.result.domain.SiftScienceResponse;
+import com.mcac0006.siftscience.score.domain.SiftScienceScore;
+import org.apache.http.client.fluent.Request;
+import org.apache.http.client.fluent.Response;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ContentType;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import com.mcac0006.siftscience.event.domain.Event;
-import com.mcac0006.siftscience.label.domain.Label;
-import com.mcac0006.siftscience.result.domain.SiftScienceResponse;
-import com.mcac0006.siftscience.score.domain.SiftScienceScore;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * This helper will take care of marshalling the content you wish to send to Sift Science and 
@@ -60,13 +57,10 @@ public class SiftScienceHelper {
 		event.setApiKey(apiKey);
 		
 		try {
-			
-			final Client client = ClientBuilder.newClient();
-			final WebTarget target = client.target("https://api.siftscience.com/v203/events");
-			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
-			final Response post = request.post(Entity.entity(mapper.writeValueAsString(event), MediaType.APPLICATION_JSON_TYPE));
-			
-			final SiftScienceResponse siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResponse.class);
+            String response = Request.Post("https://api.siftscience.com/v203/events")
+                    .bodyString(mapper.writeValueAsString(event), ContentType.APPLICATION_JSON)
+                    .execute().returnContent().asString();
+            final SiftScienceResponse siftResult = mapper.readValue(response, SiftScienceResponse.class);
 			return siftResult;
 			
 		} catch (JsonGenerationException e) {
@@ -91,12 +85,9 @@ public class SiftScienceHelper {
 		
 		try {
 			
-			final Client client = ClientBuilder.newClient();
-			final WebTarget target = client.target("https://api.siftscience.com/v203/users/").path(userId).path("labels");
-			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
-			final Response post = request.post(Entity.entity(mapper.writeValueAsString(label), MediaType.APPLICATION_JSON_TYPE));
-			
-			final SiftScienceResponse siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResponse.class);
+            Response response = Request.Post("https://api.siftscience.com/v203/users/" + userId + "/labels")
+                    .bodyString(mapper.writeValueAsString(label), ContentType.APPLICATION_JSON).execute();
+            final SiftScienceResponse siftResult = mapper.readValue(response.returnContent().asString(), SiftScienceResponse.class);
 			return siftResult;
 			
 		} catch (JsonGenerationException e) {
@@ -109,7 +100,7 @@ public class SiftScienceHelper {
 	}
 
     public static void main(String [] args){
-        SiftScienceHelper h = new SiftScienceHelper("XXXXX");
+        SiftScienceHelper h = new SiftScienceHelper("d37cb8a2f0281d29");
         SiftScienceScore scode = h.getScore("2");
         System.out.println(scode);
     }
@@ -127,13 +118,9 @@ public class SiftScienceHelper {
 	public SiftScienceScore getScore(final String userId) {
 		
 		try {
-			
-			final Client client = ClientBuilder.newClient();
-			final WebTarget target = client.target("https://api.siftscience.com/v203/score/").path(userId).queryParam("api_key", apiKey);
-			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
-			final Response get = request.get();
-			
-			final SiftScienceScore score = mapper.readValue(get.readEntity(String.class), SiftScienceScore.class);
+            URI uri = new URIBuilder("https://api.siftscience.com/v203/score/" + userId).addParameter("api_key", apiKey).build();
+            String response = Request.Get(uri).execute().returnContent().asString();
+            final SiftScienceScore score = mapper.readValue(response, SiftScienceScore.class);
 			return score;
 			
 		} catch (JsonGenerationException e) {
@@ -142,7 +129,9 @@ public class SiftScienceHelper {
 			throw new RuntimeException("Error generating JSON content to send.", e);
 		} catch (IOException e) {
 			throw new RuntimeException("Error generating JSON content to send.", e);
-		}
-		
-	}
+		} catch (URISyntaxException e) {
+			throw new RuntimeException("Error Creating URL to send.", e);
+        }
+
+    }
 }
