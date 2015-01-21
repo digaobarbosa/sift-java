@@ -9,7 +9,9 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Rodrigo on 21/07/2014.
@@ -26,5 +28,5 @@ public class ScoreLabel {
     @JsonSerialize(using=DateSerializer.class)
     @JsonDeserialize(using=DateDeserializer.class)
     private Date time;
-    private Reason[] reasons;
+    private List<String> reasons = new ArrayList<>();
 }

@@ -120,8 +120,8 @@ public class SiftScienceHelper {
 		try {
             URI uri = new URIBuilder("https://api.siftscience.com/v203/score/" + userId).addParameter("api_key", apiKey).build();
             String response = Request.Get(uri).execute().returnContent().asString();
-            final SiftScienceScore score = mapper.readValue(response, SiftScienceScore.class);
-			return score;
+            final SiftScienceScore score = parseScore(response);
+            return score;
 			
 		} catch (JsonGenerationException e) {
 			throw new RuntimeException("Error generating JSON content to send.", e);
@@ -133,5 +133,9 @@ public class SiftScienceHelper {
 			throw new RuntimeException("Error Creating URL to send.", e);
         }
 
+    }
+
+    public SiftScienceScore parseScore(String response) throws IOException {
+        return mapper.readValue(response, SiftScienceScore.class);
     }
 }

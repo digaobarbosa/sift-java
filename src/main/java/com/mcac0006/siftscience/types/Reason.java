@@ -49,7 +49,7 @@ public enum Reason {
 	public String getSiftScienceValue() {
 		return siftScienceValue;
 	}
-	
+
 	public static Reason resolve(final String siftScienceValue) {
 		
 		for (Reason ele : Reason.values()) {
