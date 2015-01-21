@@ -28,5 +28,5 @@ public class ScoreLabel {
     @JsonSerialize(using=DateSerializer.class)
     @JsonDeserialize(using=DateDeserializer.class)
     private Date time;
-    private List<String> reasons = new ArrayList<>();
+    private List<String> reasons = new ArrayList<String>();
 }
