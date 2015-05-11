@@ -1,0 +1,18 @@
+{
+  "latest_version": "203",
+  "versions" : {
+    "203" : {
+      "user_id": "billy_jones_301",
+      "score": 0.93,
+      "reasons": [
+        {
+          "name": "UsersPerDevice",
+          "value": 4,
+          "details": {
+            "users": "a, b, c, d"
+          }
+        }
+      ]
+    }
+  }
+}

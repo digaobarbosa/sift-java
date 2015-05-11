@@ -7,6 +7,7 @@ import com.mcac0006.siftscience.event.domain.Event;
 import com.mcac0006.siftscience.label.domain.Label;
 import com.mcac0006.siftscience.result.domain.SiftScienceResponse;
 import com.mcac0006.siftscience.score.domain.SiftScienceScore;
+import lombok.Getter;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.client.utils.URIBuilder;
@@ -30,7 +31,8 @@ import java.net.URISyntaxException;
  *
  */
 public class SiftScienceHelper {
-	
+
+	@Getter
 	private ObjectMapper mapper;
 	
 	private String apiKey;
