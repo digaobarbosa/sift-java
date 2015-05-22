@@ -97,13 +97,36 @@ public class SiftScienceHelper {
 		} catch (JsonMappingException e) {
 			throw new RuntimeException("Error generating JSON content to send.", e);
 		} catch (IOException e) {
+			throw new RuntimeException("Erro IO with Sift.", e);
+		}
+	}
+	/**
+	 * Removes a label a Label ($label) to Sift Science.
+	 *
+	 * @param userId - the user in question
+	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
+	 */
+	public int removeLabel(final String userId) {
+
+		try {
+			URI uri = new URIBuilder("https://api.siftscience.com/v203/users/" + userId+"/labels").addParameter("api_key", apiKey).build();
+            Response response = Request.Delete(uri).execute();
+            return response.returnResponse().getStatusLine().getStatusCode();
+
+		} catch (JsonGenerationException e) {
 			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (JsonMappingException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (IOException e) {
+			throw new RuntimeException("Error IO with sift.", e);
+		} catch (URISyntaxException e) {
+			throw new RuntimeException("Error generating URI content to send.", e);
 		}
 	}
 
     public static void main(String [] args){
         SiftScienceHelper h = new SiftScienceHelper("d37cb8a2f0281d29");
-        SiftScienceScore scode = h.getScore("2");
+        int scode = h.removeLabel("229868");
         System.out.println(scode);
     }
 	
