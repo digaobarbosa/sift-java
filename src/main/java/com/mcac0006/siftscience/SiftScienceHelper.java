@@ -109,7 +109,7 @@ public class SiftScienceHelper {
 	public int removeLabel(final String userId) {
 
 		try {
-			URI uri = new URIBuilder("https://api.siftscience.com/v203/users/" + userId+"/labels").addParameter("api_key", apiKey).build();
+			URI uri = new URIBuilder("https://api.siftscience.com/v203/users/" + userId+"/labels/").addParameter("api_key", apiKey).build();
             Response response = Request.Delete(uri).execute();
             return response.returnResponse().getStatusLine().getStatusCode();
 
@@ -126,7 +126,7 @@ public class SiftScienceHelper {
 
     public static void main(String [] args){
         SiftScienceHelper h = new SiftScienceHelper("d37cb8a2f0281d29");
-        int scode = h.removeLabel("229868");
+        int scode = h.removeLabel("253003");
         System.out.println(scode);
     }
 	
