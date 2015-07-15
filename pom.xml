@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>siftjava</groupId>
   <artifactId>sift-java</artifactId>
-  <version>1.0.5-guiche</version>
+  <version>1.0.5.1-guiche</version>
   <packaging>jar</packaging>
   
   <name>Sift Science Java library</name>
