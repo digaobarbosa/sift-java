@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(of={"isBad","time"})
-@JsonIgnoreProperties
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ScoreLabel {
 
     @JsonProperty(value="is_bad")

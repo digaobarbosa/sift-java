@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import lombok.ToString;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -26,6 +27,7 @@ import com.mcac0006.siftscience.types.serializer.DateSerializer;
  *
  */
 @ToString(of={"isBad","reasons","description"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Label {
 	
 	/**

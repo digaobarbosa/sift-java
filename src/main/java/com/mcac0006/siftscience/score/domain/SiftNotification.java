@@ -1,6 +1,7 @@
 package com.mcac0006.siftscience.score.domain;
 
 import lombok.Data;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.TreeMap;
  * As specified in https://siftscience.com/resources/references/score-api Labels Api
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SiftNotification {
     @JsonProperty(value="latest_version")
     private String latestVersion;

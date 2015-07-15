@@ -4,6 +4,7 @@
 package com.mcac0006.siftscience.result.domain;
 
 import lombok.ToString;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * This is the response we receive from Sift Science.
@@ -12,6 +13,7 @@ import lombok.ToString;
  *
  */
 @ToString(of = {"status","error_message","request"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SiftScienceResponse {
 	
 	/**

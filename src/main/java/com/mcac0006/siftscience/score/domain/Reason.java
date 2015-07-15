@@ -5,6 +5,7 @@ package com.mcac0006.siftscience.score.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,7 @@ import java.util.Map;
  */
 @EqualsAndHashCode(of={"name","value"})
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Reason {
 
 	/**

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.mcac0006.siftscience.label.domain.Label;
@@ -28,6 +29,7 @@ import com.mcac0006.siftscience.label.domain.Label;
 @ToString(of={"userId","score"})
 @Data
 @EqualsAndHashCode(of = {"userId","errorMessage","score"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SiftScienceScore {
 
 	
