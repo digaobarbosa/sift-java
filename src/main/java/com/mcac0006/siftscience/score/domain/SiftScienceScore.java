@@ -3,15 +3,11 @@
  */
 package com.mcac0006.siftscience.score.domain;
 
-import java.util.Arrays;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-
-import com.mcac0006.siftscience.label.domain.Label;
 
 /**
  * This class represents the score which is received from Sift Science about 

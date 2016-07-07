@@ -1,0 +1,19 @@
+{
+  "status": 0,
+  "error_message": "OK",
+  "time": 1467921056,
+  "request": "request",
+  "score_response": {
+    "status": 0,
+    "error_message": "OK",
+    "score": 0.3172187665418693,
+    "reasons": [
+      {
+        "name": "CustomerTld",
+        "value": "br/sandbox"
+      }
+    ],
+    "user_id": "viniciuslopeslps@gmail.com",
+    "actions": []
+  }
+}
