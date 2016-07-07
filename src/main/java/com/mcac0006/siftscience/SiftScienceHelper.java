@@ -124,18 +124,6 @@ public class SiftScienceHelper {
 		}
 	}
 
-	public static void main(String[] args) {
-		SiftScienceHelper h = new SiftScienceHelper("d37cb8a2f0281d29");
-		Event event = new Event("Teste") {
-			@Override
-			public String getApiKey() {
-				return "d37cb8a2f0281d29";
-			}
-		};
-		event.addCustomField("$user_id","viniciuslopeslps@gmail.com");
-		SiftScienceResponse send = h.send(event);
-		System.out.println("scoreSift: " + send.getScore_response().getScore());
-	}
 
 	/**
 	 * Retrieve a risk assessment of a particular user. This is particularly useful to consult with Sift Science 
