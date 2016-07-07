@@ -6,6 +6,7 @@ package com.mcac0006.siftscience;
 import com.mcac0006.siftscience.event.domain.Event;
 import com.mcac0006.siftscience.label.domain.Label;
 import com.mcac0006.siftscience.result.domain.SiftScienceResponse;
+import com.mcac0006.siftscience.result.domain.SiftScienceSyncResponse;
 import com.mcac0006.siftscience.score.domain.SiftScienceScore;
 import lombok.Getter;
 import org.apache.http.client.fluent.Request;
@@ -54,7 +55,7 @@ public class SiftScienceHelper {
 	 * @param event - the content regarding the user (or session) in question.
 	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
 	 */
-	public SiftScienceResponse send(final Event event) {
+	public SiftScienceSyncResponse send(final Event event) {
 		
 		event.setApiKey(apiKey);
 		
@@ -62,7 +63,7 @@ public class SiftScienceHelper {
             String response = Request.Post("https://api.siftscience.com/v203/events?return_action=true")
                     .bodyString(mapper.writeValueAsString(event), ContentType.APPLICATION_JSON)
                     .execute().returnContent().asString();
-            final SiftScienceResponse siftResult = mapper.readValue(response, SiftScienceResponse.class);
+            final SiftScienceSyncResponse siftResult = mapper.readValue(response, SiftScienceSyncResponse.class);
 			return siftResult;
 			
 		} catch (JsonGenerationException e) {
@@ -73,7 +74,7 @@ public class SiftScienceHelper {
 			throw new RuntimeException("Error generating JSON content to send.", e);
 		}
 	}
-	
+
 	/**
 	 * Sends a Label ($label) to Sift Science.
 	 * 
@@ -100,6 +101,7 @@ public class SiftScienceHelper {
 			throw new RuntimeException("Erro IO with Sift.", e);
 		}
 	}
+
 	/**
 	 * Removes a label a Label ($label) to Sift Science.
 	 *
