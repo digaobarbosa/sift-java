@@ -59,7 +59,7 @@ public class SiftScienceHelper {
 		event.setApiKey(apiKey);
 		
 		try {
-            String response = Request.Post("https://api.siftscience.com/v203/events")
+            String response = Request.Post("https://api.siftscience.com/v203/events?return_action=true")
                     .bodyString(mapper.writeValueAsString(event), ContentType.APPLICATION_JSON)
                     .execute().returnContent().asString();
             final SiftScienceResponse siftResult = mapper.readValue(response, SiftScienceResponse.class);
@@ -123,12 +123,6 @@ public class SiftScienceHelper {
 			throw new RuntimeException("Error generating URI content to send.", e);
 		}
 	}
-
-    public static void main(String [] args){
-        SiftScienceHelper h = new SiftScienceHelper("d37cb8a2f0281d29");
-        int scode = h.removeLabel("253003");
-        System.out.println(scode);
-    }
 	
 	/**
 	 * Retrieve a risk assessment of a particular user. This is particularly useful to consult with Sift Science 
