@@ -3,10 +3,9 @@
  */
 package com.mcac0006.siftscience.result.domain;
 
+import com.mcac0006.siftscience.score.domain.SiftScienceScore;
 import lombok.ToString;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
-import java.math.BigDecimal;
 
 /**
  * This is the response we receive from Sift Science.
@@ -43,7 +42,7 @@ public class SiftScienceResponse {
 	 */
 	private String request;
 
-    private SiftScoreResponse score_response;
+    private SiftScienceScore score_response;
 
 	public Integer getStatus() {
 		return status;
@@ -77,11 +76,11 @@ public class SiftScienceResponse {
 		this.request = request;
 	}
 
-    public SiftScoreResponse getScore_response() {
+    public SiftScienceScore getScore_response() {
         return score_response;
     }
 
-    public void setScore_response(SiftScoreResponse score_response) {
+    public void setScore_response(SiftScienceScore score_response) {
         this.score_response = score_response;
     }
 }
