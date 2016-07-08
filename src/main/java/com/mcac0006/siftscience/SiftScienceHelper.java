@@ -55,25 +55,45 @@ public class SiftScienceHelper {
 	 * @param event - the content regarding the user (or session) in question.
 	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
 	 */
-	public SiftScienceSyncResponse send(final Event event) {
-		
-		event.setApiKey(apiKey);
-		
-		try {
+    public SiftScienceSyncResponse sendSync(final Event event) {
+
+        event.setApiKey(apiKey);
+
+        try {
             String response = Request.Post("https://api.siftscience.com/v203/events?return_action=true")
                     .bodyString(mapper.writeValueAsString(event), ContentType.APPLICATION_JSON)
                     .execute().returnContent().asString();
             final SiftScienceSyncResponse siftResult = mapper.readValue(response, SiftScienceSyncResponse.class);
-			return siftResult;
-			
-		} catch (JsonGenerationException e) {
-			throw new RuntimeException("Error generating JSON content to send.", e);
-		} catch (JsonMappingException e) {
-			throw new RuntimeException("Error generating JSON content to send.", e);
-		} catch (IOException e) {
-			throw new RuntimeException("Error generating JSON content to send.", e);
-		}
-	}
+            return siftResult;
+
+        } catch (JsonGenerationException e) {
+            throw new RuntimeException("Error generating JSON content to send.", e);
+        } catch (JsonMappingException e) {
+            throw new RuntimeException("Error generating JSON content to send.", e);
+        } catch (IOException e) {
+            throw new RuntimeException("Error generating JSON content to send.", e);
+        }
+    }
+
+    public SiftScienceResponse send(final Event event) {
+
+        event.setApiKey(apiKey);
+
+        try {
+            String response = Request.Post("https://api.siftscience.com/v203/events")
+                    .bodyString(mapper.writeValueAsString(event), ContentType.APPLICATION_JSON)
+                    .execute().returnContent().asString();
+            final SiftScienceResponse siftResult = mapper.readValue(response, SiftScienceResponse.class);
+            return siftResult;
+
+        } catch (JsonGenerationException e) {
+            throw new RuntimeException("Error generating JSON content to send.", e);
+        } catch (JsonMappingException e) {
+            throw new RuntimeException("Error generating JSON content to send.", e);
+        } catch (IOException e) {
+            throw new RuntimeException("Error generating JSON content to send.", e);
+        }
+    }
 
 	/**
 	 * Sends a Label ($label) to Sift Science.
